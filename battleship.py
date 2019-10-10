@@ -5,7 +5,7 @@ for x in range(5):
   board.append(["O"] * 5)
 
 def print_board(board):
-  
+
   for row in board:
     print " ".join(row)
 
@@ -23,8 +23,14 @@ print ship_row
 print ship_col
 
 for  turn in range(4):
-  guess_row = int(raw_input("Guess Row: "))
-  guess_col = int(raw_input("Guess Col: "))
+  # this block will run continuously until player enter valid row and col
+  while True:
+   try:
+     guess_row = int(raw_input("Guess Row: "))
+     guess_col = int(raw_input("Guess Col: "))
+     break
+   except Exception as e:
+     print "Please enter valid integers for row and column"
 
   if guess_row == ship_row and guess_col == ship_col:
     print "Congratulations! You sunk my battleship!"
